@@ -8,18 +8,26 @@ import { useRouter } from "next/router";
 
 
 export default function Home() {
-  const router = useRouter();
+  const { query, push } = useRouter();
   
-  const { weatherData, weatherNoResults } = useWeatherStore((state) => ({
+  const { weatherData, weatherQuery, searchTerm, weatherNoResults } = useWeatherStore((state) => ({
     weatherData: state.weatherDetails.data,
+    weatherQuery: state.weatherDetails.query,
+    searchTerm: state.searchTerm,
     weatherNoResults: state.weatherDetails.error
   }));
 
   useEffect(() => {
-    if(weatherData?.location)
-      router.push(`/?location=${encodeURIComponent(weatherData?.location)}`);
-    
-  }, [router, weatherData])
+    if(query.location && !Array.isArray(query.location) && searchTerm.location != query.location) {
+      const { location } = query;
+
+      searchTerm.update(location);
+
+      push(`/?location=${encodeURIComponent(location)}`);
+
+      weatherQuery(location);
+    }
+  }, [push, query, query.location, searchTerm, weatherQuery]);
 
 
   return (

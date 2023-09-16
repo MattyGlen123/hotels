@@ -4,6 +4,7 @@ import { getWeather } from '../api/weather';
 import { formatDay, formatTime } from '../util/formatDates';
 
 const initalState = {
+  searchTerm: '',
   weatherDetails: {
     data: null,
     error: false
@@ -12,6 +13,15 @@ const initalState = {
 
 const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
   ...initalState,
+  searchTerm: {
+    location: '',
+    update: (text) => set({
+      searchTerm: {
+        ...get().searchTerm,
+        location: text
+      }
+    })
+  },
   weatherDetails: {
     data: null,
     error: false,

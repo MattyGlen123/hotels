@@ -1,20 +1,28 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useWeatherStore } from "../../store/weather";
 import { SearchForm } from "./search.type";
+import { useRouter } from "next/router";
 
 export const Search = () => {
+  const { query, push } = useRouter();
+  
+  const { weatherQuery, location } = useWeatherStore(state => ({
+    weatherQuery: state.weatherDetails.query,
+    location: state.searchTerm.location,
+  }));
 
   const { control, handleSubmit, formState: { errors } } = useForm<SearchForm>({
     defaultValues: {
-      location: '',
+      location: location,
+    },
+    values: {
+      location
     }
   });
 
-  const { weatherQuery } = useWeatherStore(state => ({
-    weatherQuery: state.weatherDetails.query
-  }));
-
   const onSearch: SubmitHandler<SearchForm> = ({ location }) => {
+    push(`/?location=${encodeURIComponent(location)}`);
+
     weatherQuery(location);
   };
 

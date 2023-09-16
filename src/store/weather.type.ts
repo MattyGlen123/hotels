@@ -9,6 +9,10 @@ type WeatherData = {
 }
 
 type WeatherStore = {
+  searchTerm: {
+    location: string,
+    update: (text: string) => void
+  };
   weatherDetails: {
     data: WeatherData | null,
     query: (location: string) => Promise<void>,
