@@ -43,7 +43,7 @@ export const Search = () => {
         render={({ field: { onChange, value, ref } }) => (
           <input
             className={classList([
-              "bg-sky-800 text-slate-50 py-2 pl-2 rounded-tl rounded-bl flex-grow",
+              "bg-sky-800 text-slate-50 py-2 pl-2 rounded-tl-lg rounded-bl-lg flex-grow",
               !!errors.location ? "border-solid border-2 border-rose-600" : "",
             ])}
             onChange={onChange}
@@ -55,7 +55,7 @@ export const Search = () => {
       />
       <input
         type="submit"
-        className="bg-sky-800 text-slate-50 py-2 px-6 border-l border-slate-50 rounded-tr rounded-br"
+        className="bg-sky-800 text-slate-50 py-2 px-6 border-l border-slate-50 rounded-tr-lg rounded-br-lg"
       />
     </form>
   );
