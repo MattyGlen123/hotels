@@ -11,10 +11,10 @@ export default function Home() {
   const { query, push } = useRouter();
   
   const { weatherData, weatherQuery, searchTerm, weatherNoResults } = useWeatherStore((state) => ({
-    weatherData: state.weatherDetails.data,
-    weatherQuery: state.weatherDetails.query,
+    weatherData: state.currentWeather.data,
+    weatherQuery: state.currentWeather.query,
     searchTerm: state.searchTerm,
-    weatherNoResults: state.weatherDetails.error
+    weatherNoResults: state.currentWeather.error
   }));
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-sky-950 text-slate-50	">
+    <main className="flex min-h-screen flex-col items-center justify-between py-12 px-4 bg-sky-950 text-slate-50	">
       <Search />
       
       {weatherNoResults && (<p>No results found, please search again.</p>)}

@@ -5,7 +5,7 @@ import { formatDay, formatTime } from '../util/formatDates';
 
 const initalState = {
   searchTerm: '',
-  weatherDetails: {
+  currentWeather: {
     data: null,
     error: false
   }
@@ -22,13 +22,13 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
       }
     })
   },
-  weatherDetails: {
+  currentWeather: {
     data: null,
     error: false,
     query: async (location) => {
       set({
-        weatherDetails: {
-          ...get().weatherDetails,
+        currentWeather: {
+          ...get().currentWeather,
           error: false
         }
       })
@@ -37,8 +37,8 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
 
       if (isError) {
         return set({
-          weatherDetails: {
-            ...get().weatherDetails,
+          currentWeather: {
+            ...get().currentWeather,
             data: null,
             error: true,
           }
@@ -47,8 +47,8 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
 
       if (data) {
         set({
-          weatherDetails: {
-            ...get().weatherDetails,
+          currentWeather: {
+            ...get().currentWeather,
             data: {
               temp: data.current.temp_c,
               conditionIcon: data.current.condition.icon,

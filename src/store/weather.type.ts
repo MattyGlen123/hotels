@@ -1,4 +1,4 @@
-type WeatherData = {
+type CurrentWeatherData = {
   temp: number,
   day: string,
   time: string,
@@ -13,8 +13,8 @@ type WeatherStore = {
     location: string,
     update: (text: string) => void
   };
-  weatherDetails: {
-    data: WeatherData | null,
+  currentWeather: {
+    data: CurrentWeatherData | null,
     query: (location: string) => Promise<void>,
     error: boolean
   }

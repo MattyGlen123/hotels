@@ -8,8 +8,8 @@ import { classList } from "@/util/classList";
 export const Search = () => {
   const { query, push } = useRouter();
   
-  const { weatherQuery, location } = useWeatherStore(state => ({
-    weatherQuery: state.weatherDetails.query,
+  const { currentWeatherQuery, location } = useWeatherStore(state => ({
+    currentWeatherQuery: state.currentWeather.query,
     location: state.searchTerm.location,
   }));
 
@@ -25,7 +25,7 @@ export const Search = () => {
   const onSearch: SubmitHandler<SearchForm> = ({ location }) => {
     push(`/?location=${encodeURIComponent(location)}`);
 
-    weatherQuery(location);
+    currentWeatherQuery(location);
   };
 
   return (
