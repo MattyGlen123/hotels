@@ -26,8 +26,10 @@ export const CurrentWeather = ({
         <p className="ml-2">{country}</p>
       </div>
       <div className="flex mb-4 items-center">
-        <p className="mr-2">{time}</p> |{" "}
-        <p className="ml-2">Feels like: {conditionText}</p>
+        <p className="mr-2">{time}</p>
+        <p className="border-l border-slate-50 pl-2">
+          Feels like: {conditionText}
+        </p>
       </div>
     </>
   );
