@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { type StateCreator } from 'zustand/vanilla'
 import { getWeather } from '../api/weather';
 import { formatDay, formatTime } from '../util/formatDates';
+import { WeatherStore } from './weather.type';
 
 const initalState = {
   searchTerm: '',

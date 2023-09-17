@@ -1,14 +1,6 @@
-type CurrentWeatherData = {
-  temp: number,
-  day: string,
-  time: string,
-  conditionIcon: string,
-  conditionText: string,
-  location: string,
-  country: string
-}
+import { CurrentWeatherData } from "@/core/types/weather.type";
 
-type WeatherStore = {
+export type WeatherStore = {
   searchTerm: {
     location: string,
     update: (text: string) => void
