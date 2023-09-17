@@ -31,7 +31,7 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-sky-950 text-slate-50	">
       <Search />
       
       {weatherNoResults && (<p>No results found, please search again.</p>)}
