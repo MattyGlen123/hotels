@@ -4,7 +4,6 @@ export const CurrentWeather = ({
   conditionIcon,
   conditionText,
   country,
-  day,
   location,
   temp,
   time,

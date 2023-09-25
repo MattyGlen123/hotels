@@ -55,7 +55,6 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
               conditionIcon: data.current.condition.icon,
               conditionText: data.current.condition.text,
               country: data.location.country,
-              day: formatDay(data.location.localtime),
               location: data.location.name,
               time: formatTime(data.location.localtime)
             }
