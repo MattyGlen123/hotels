@@ -1,3 +1,5 @@
+import { AxiosError } from "axios";
+
 type Location = {
   name: string;
   region: string;
@@ -46,8 +48,11 @@ export type WeatherDataResponse = {
   current: Current;
 }
 
-export type ApiResponse = {
-  data: WeatherDataResponse | null;
+export type AxiosApiResponse = {
   isError: boolean;
-  error: string | null;
+  error: AxiosError | null;
 };
+
+export type AxiosApiDataResponse<TData = null> = AxiosApiResponse & {
+  data: TData;
+}

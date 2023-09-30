@@ -1,25 +1,24 @@
 import axios, { AxiosError, AxiosResponse } from "axios"
-import { ApiResponse, WeatherDataResponse } from "./weather.type"
+import { AxiosApiDataResponse } from "./weather.type"
+import { weather } from "@/core/urls"
 
-export const getWeather = async (location: string): Promise<ApiResponse> => {
+export const getWeather = async (location: string): Promise<AxiosApiDataResponse> => {
 
   try {
-    const response: AxiosResponse = await axios({
-      method: 'GET',
-      url: `http://api.weatherapi.com/v1/current.json?key=8483c1c9f03f46f8aee113029232908&q=${location}&aqi=no`
-    })
+    const response: AxiosResponse = await axios.get(weather.getByLocation(location))
 
     return {
       data: response.data,
       isError: false,
       error: null
     }
-  } catch (error) {
+  } catch (err) {
+    const error = err as AxiosError
 
     return {
       data: null,
       isError: true,
-      error: error as string
+      error
     }
   }
 }
