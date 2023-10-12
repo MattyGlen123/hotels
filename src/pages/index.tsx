@@ -10,11 +10,12 @@ import { CurrentWeather } from "@/components/current-weather/current-weather";
 export default function Home() {
   const { query, push } = useRouter();
 
-  const { weatherData, weatherQuery, searchTerm, weatherNoResults } =
+  const { weatherData, weatherQuery, location, setLocation, weatherNoResults } =
     useWeatherStore((state) => ({
       weatherData: state.currentWeather.data,
       weatherQuery: state.currentWeather.query,
-      searchTerm: state.searchTerm,
+      location: state.location,
+      setLocation: state.setLocation,
       weatherNoResults: state.currentWeather.error,
     }));
 
@@ -22,17 +23,17 @@ export default function Home() {
     if (
       query.location &&
       !Array.isArray(query.location) &&
-      searchTerm.location != query.location
+      location != query.location
     ) {
       const { location } = query;
 
-      searchTerm.update(location);
+      setLocation(location);
 
       push(`/?location=${encodeURIComponent(location)}`);
 
       weatherQuery(location);
     }
-  }, [push, query, query.location, searchTerm, weatherQuery]);
+  }, [push, query, query.location, location, weatherQuery, setLocation]);
 
   return (
     <main className="flex min-h-screen flex-col py-12 px-4 bg-sky-950 text-slate-50	">

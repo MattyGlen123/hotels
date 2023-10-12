@@ -9,7 +9,7 @@ export const Search = () => {
 
   const { currentWeatherQuery, location } = useWeatherStore((state) => ({
     currentWeatherQuery: state.currentWeather.query,
-    location: state.searchTerm.location,
+    location: state.location,
   }));
 
   const {

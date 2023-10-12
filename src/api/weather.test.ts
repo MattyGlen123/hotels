@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { getWeather } from "./weather";
-import axios from "axios";
-import { mockCurrentWeather } from "@/mocks";
+import axios, { AxiosError } from "axios";
+import { mockCurrentWeatherAPI } from "@/core/mocks";
 import { weather } from "@/core/urls";
 
 jest.mock('axios');
@@ -9,7 +9,7 @@ jest.mock('axios');
 describe("getWeather", () => {
   it("should return a success response", async () => {
     const mockResponse = {
-      data: mockCurrentWeather,
+      data: mockCurrentWeatherAPI,
       isError: false,
       error: null
     }
@@ -17,11 +17,26 @@ describe("getWeather", () => {
     const mockUrl = weather.getByLocation(mockLocation);
     const mockAxiosAction = jest.spyOn(axios, 'get').mockResolvedValue(mockResponse);
 
-    const result = await getWeather(mockLocation);
+    const response = await getWeather(mockLocation);
 
     expect(mockAxiosAction).toHaveBeenNthCalledWith(1, mockUrl);
-    expect(result.data).toEqual(mockCurrentWeather);
-    expect(result.isError).toBeFalsy();
-    expect(result.error).toEqual(null);
+    expect(response.data).toMatchObject(mockCurrentWeatherAPI);
+    expect(response.isError).toBeFalsy();
+    expect(response.error).toEqual(null);
+  });
+
+  it("should return a error response", async () => {
+    const mockLocation = 'Manchester';
+    const mockUrl = weather.getByLocation(mockLocation);
+    const mockAxiosAction = jest.spyOn(axios, 'get').mockImplementation(() => Promise.reject(new AxiosError('Error')));
+
+    const response = await getWeather(mockLocation);
+
+    expect(mockAxiosAction).toHaveBeenNthCalledWith(1, mockUrl);
+    expect(response).toEqual({
+      data: null, 
+      isError: true, 
+      error: new AxiosError('Error')
+    });
   });
 });

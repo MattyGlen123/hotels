@@ -53,6 +53,8 @@ export type AxiosApiResponse = {
   error: AxiosError | null;
 };
 
-export type AxiosApiDataResponse<TData = null> = AxiosApiResponse & {
-  data: TData;
+export type AxiosApiDataResponse<TData> = AxiosApiResponse & {
+  data: TData | null;
 }
+
+export type WeatherResponse = AxiosApiDataResponse<WeatherDataResponse>;

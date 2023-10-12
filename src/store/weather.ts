@@ -1,28 +1,16 @@
 import { create } from 'zustand'
 import { type StateCreator } from 'zustand/vanilla'
 import { getWeather } from '../api/weather';
-import { formatDay, formatTime } from '../util/formatDates';
-import { WeatherStore } from './weather.type';
+import { formatTime } from '../util/formatDates';
+import { WeatherStore, WeatherStoreStateValues } from './weather.type';
 
-const initalState = {
-  searchTerm: '',
-  currentWeather: {
-    data: null,
-    error: false
-  }
-}
+export const initalState: WeatherStoreStateValues = {
+  location: ''
+};
 
 const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
   ...initalState,
-  searchTerm: {
-    location: '',
-    update: (text) => set({
-      searchTerm: {
-        ...get().searchTerm,
-        location: text
-      }
-    })
-  },
+  setLocation: (location) => set({location}),
   currentWeather: {
     data: null,
     error: false,
@@ -35,8 +23,10 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
       })
 
       const { data, isError, error } = await getWeather(location);
-
+      
       if (isError) {
+        console.error(`Error requesting getWeather.`, `Location: "${location}"` , error);
+
         return set({
           currentWeather: {
             ...get().currentWeather,

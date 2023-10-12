@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 import { CurrentWeather } from "@/components/current-weather/current-weather";
-import { mockCurrentWeather } from "@/mocks";
+import { mockCurrentWeather } from "@/core/mocks";
 
 describe("CurrentWeather", () => {
   it("should render today's temp", () => {
