@@ -13,12 +13,17 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
   setLocation: (location) => set({location}),
   currentWeather: {
     data: null,
-    error: false,
+    error: null,
+    isError: false,
+    isLoading: false,
     query: async (location) => {
       set({
         currentWeather: {
           ...get().currentWeather,
-          error: false
+          data: null,
+          error: null,
+          isError: false,
+          isLoading: true
         }
       })
 
@@ -31,7 +36,9 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
           currentWeather: {
             ...get().currentWeather,
             data: null,
-            error: true,
+            isError,
+            error: error,
+            isLoading: false
           }
         })
       }
@@ -47,7 +54,10 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
               country: data.location.country,
               location: data.location.name,
               time: formatTime(data.location.localtime)
-            }
+            },
+            isError: false,
+            error: null,
+            isLoading: false
           }
         })
       }

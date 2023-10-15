@@ -26,6 +26,8 @@ export const Search = () => {
   });
 
   const onSearch: SubmitHandler<SearchForm> = ({ location }) => {
+    if (query.location === location) return null;
+
     push(`/?location=${encodeURIComponent(location)}`);
 
     currentWeatherQuery(location);

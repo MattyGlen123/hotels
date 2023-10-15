@@ -1,4 +1,5 @@
 import { CurrentWeatherData } from "@/core/types/weather.type";
+import { AxiosError } from "axios";
 
 export type WeatherStore = {
   location: string,
@@ -6,7 +7,9 @@ export type WeatherStore = {
   currentWeather: {
     data: CurrentWeatherData | null,
     query: (location: string) => Promise<void>,
-    error: boolean
+    error: AxiosError | null,
+    isError: boolean,
+    isLoading: boolean
   }
 }
 
