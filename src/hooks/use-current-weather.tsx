@@ -5,14 +5,14 @@ import { useEffect } from "react";
 export function useCurrentWeather() {
   const {
     query: { location: locationQueryString },
-    push,
   } = useRouter();
 
   const {
     currentWeather: {
       data: weatherData,
-      error: weatherNoResults,
       query: weatherQuery,
+      error,
+      isError,
       isLoading,
     },
     location,
@@ -26,5 +26,5 @@ export function useCurrentWeather() {
     }
   }, [location, locationQueryString, setLocation, weatherQuery]);
 
-  return { weatherNoResults, weatherData, isLoading };
+  return { weatherData, isLoading, isError, error };
 }

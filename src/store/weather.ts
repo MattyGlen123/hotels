@@ -37,7 +37,7 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
             ...get().currentWeather,
             data: null,
             isError,
-            error: error,
+            error,
             isLoading: false
           }
         })
@@ -53,6 +53,7 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
               conditionText: data.current.condition.text,
               country: data.location.country,
               location: data.location.name,
+              feelslike: data.current.feelslike_c,
               time: formatTime(data.location.localtime)
             },
             isError: false,

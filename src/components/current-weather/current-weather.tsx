@@ -7,6 +7,7 @@ export const CurrentWeather = ({
   location,
   temp,
   time,
+  feelslike,
 }: CurrentWeatherProps) => {
   return (
     <>
@@ -27,7 +28,7 @@ export const CurrentWeather = ({
       <div className="flex mb-4 items-center">
         <p className="mr-2">{time}</p>
         <p className="border-l border-slate-50 pl-2">
-          Feels like: {conditionText}
+          Feels like: {feelslike}°c
         </p>
       </div>
     </>

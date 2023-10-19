@@ -28,15 +28,20 @@ describe("getWeather", () => {
   it("should return a error response", async () => {
     const mockLocation = 'Manchester';
     const mockUrl = weather.getByLocation(mockLocation);
-    const mockAxiosAction = jest.spyOn(axios, 'get').mockImplementation(() => Promise.reject(new AxiosError('Error')));
+    const mockAxiosAction = jest.spyOn(axios, 'get');
+    
+    const error = new AxiosError('Error');
+
+    mockAxiosAction.mockRejectedValueOnce(error)
 
     const response = await getWeather(mockLocation);
 
     expect(mockAxiosAction).toHaveBeenNthCalledWith(1, mockUrl);
+    
     expect(response).toEqual({
       data: null, 
       isError: true, 
-      error: new AxiosError('Error')
+      error: error
     });
   });
 });

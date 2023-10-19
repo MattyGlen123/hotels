@@ -48,6 +48,16 @@ export type WeatherDataResponse = {
   current: Current;
 }
 
+export type ErrorMessageData = {
+  response?: {
+    data?: {
+      error?: {
+        message?: string;
+      }
+    }
+  }
+}
+
 export type AxiosApiResponse = {
   isError: boolean;
   error: AxiosError | null;

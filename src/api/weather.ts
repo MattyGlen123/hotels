@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios"
-import { WeatherResponse } from "./weather.type"
+import { ErrorMessageData, WeatherResponse } from "./weather.type"
 import { weather } from "@/core/urls"
 
 export const getWeather = async (location: string): Promise<WeatherResponse> => {
@@ -12,12 +12,14 @@ export const getWeather = async (location: string): Promise<WeatherResponse> => 
       error: null
     }
   } catch (err) {
-    const error = err as AxiosError
-
+    const error = err as ErrorMessageData;
+    
+    const message = error?.response?.data?.error?.message || false;
+    
     return {
       data: null,
       isError: true,
-      error
+      error: message ? new AxiosError(message) : new AxiosError('Sorry, something went wrong fetching your weather data. Please try again.')
     }
   }
 }

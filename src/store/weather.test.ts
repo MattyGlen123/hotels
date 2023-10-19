@@ -8,8 +8,6 @@ jest.mock('../api/weather', () => ({
   getWeather: jest.fn()
 }));
 
-
-
 describe('useWeatherStore()', () => {
   it('should update state when setLocation() is called.', () => {
     const { setLocation } = useWeatherStore.getState();

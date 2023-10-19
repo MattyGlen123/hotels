@@ -7,7 +7,7 @@ import { Loading } from "@/components/loading/loading";
 import { useCurrentWeather } from "@/hooks/use-current-weather";
 
 export default function Home() {
-  const { weatherNoResults, weatherData, isLoading } = useCurrentWeather();
+  const { isError, weatherData, isLoading, error } = useCurrentWeather();
 
   return (
     <main className="flex min-h-screen flex-col py-12 px-4 bg-sky-950 text-slate-50	">
@@ -15,7 +15,7 @@ export default function Home() {
 
       {isLoading && <Loading />}
 
-      {weatherNoResults && <p>No results found, please search again.</p>}
+      {isError && <p>{error?.message}</p>}
 
       {weatherData && <CurrentWeather {...weatherData} />}
     </main>

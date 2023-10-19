@@ -3,6 +3,7 @@ export type CurrentWeatherData = {
   time: string,
   conditionIcon: string,
   conditionText: string,
+  feelslike: number,
   location: string,
   country: string
 }
