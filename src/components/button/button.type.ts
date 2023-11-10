@@ -1,5 +1,5 @@
 export interface ButtonProps {
-  label: string
-  price: string
+  subtext: string
+  text: string
   onClick?: () => void
 }

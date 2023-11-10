@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <main className="">
-      <Button label="Book Now" price="£199.99" />
+      <Button text="Book Now" subtext="£199.99" />
 
       {/* {isLoading && <Loading />} */}
 
