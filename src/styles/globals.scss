@@ -1,9 +1,13 @@
 :root {
   --yellow: #FEDC07;
   --navy: #17317F;
+  --darkGrey: #575757;
+  --grey: #A7A7A7;
+  --white: #fff;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, div, button, a {
+h1, h2, h3, h4, h5, h6, p, span, div, button, a, body {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
 }

@@ -1,11 +1,11 @@
 .button {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border: 0;
   border-radius: 4px;
   cursor: pointer;
   background-color: var(--yellow);
   padding: .75rem 1rem;
   color: var(--navy);
+  width: 100%;
 }
 
 .text {

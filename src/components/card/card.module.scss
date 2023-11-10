@@ -1,0 +1,35 @@
+.root {
+  display: grid;
+  grid-template-columns: 62% auto;
+  background-color: var(--white);
+}
+
+.inner {
+  padding: 1.25rem 1rem;
+}
+
+.name {
+  color: var(--navy);
+  margin-bottom: .25rem;
+}
+
+.location {
+  color: var(--grey);
+  margin-bottom: .5rem;
+}
+
+.guests,
+.date,
+.departingLocation {
+  font-size: .9rem;
+  color: var(--darkGrey);  
+}
+
+.guests,
+.date {
+  margin-bottom: .25rem;
+}
+
+.departingLocation {
+  margin-bottom: 1rem;
+}

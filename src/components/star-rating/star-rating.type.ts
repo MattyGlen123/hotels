@@ -1,3 +1,5 @@
-export interface StarRatingsProps {
-  count: 1 | 2 | 3 | 4 | 5
+import { Stars } from '@/core/types/hotel.type'
+
+export type StarRatingsProps = {
+  count: Stars
 }

@@ -1,0 +1,17 @@
+.root {
+  min-height: 100vh;
+  background-image: url('/background.png');
+  background-size: auto 100%; 
+  background-repeat: repeat-x;
+  background-position: center;
+  padding: 4rem 2rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+  max-width: 800px;
+  margin-left: auto;
+}
