@@ -1,16 +1,16 @@
-import { create } from 'zustand'
-import { type StateCreator } from 'zustand/vanilla'
-import { getWeather } from '../api/weather';
-import { formatTime } from '../util/formatDates';
-import { WeatherStore, WeatherStoreStateValues } from './weather.type';
+import { create } from "zustand";
+import { type StateCreator } from "zustand/vanilla";
+import { getWeather } from "../api/weather";
+import { formatTime } from "../util/formatDates";
+import { WeatherStore, WeatherStoreStateValues } from "./weather.type";
 
 export const initalState: WeatherStoreStateValues = {
-  location: ''
+  location: "",
 };
 
 const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
   ...initalState,
-  setLocation: (location) => set({location}),
+  setLocation: (location) => set({ location }),
   currentWeather: {
     data: null,
     error: null,
@@ -23,14 +23,18 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
           data: null,
           error: null,
           isError: false,
-          isLoading: true
-        }
-      })
+          isLoading: true,
+        },
+      });
 
       const { data, isError, error } = await getWeather(location);
-      
+
       if (isError) {
-        console.error(`Error requesting getWeather.`, `Location: "${location}"` , error);
+        console.error(
+          `Error requesting getWeather.`,
+          `Location: "${location}"`,
+          error
+        );
 
         return set({
           currentWeather: {
@@ -38,9 +42,9 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
             data: null,
             isError,
             error,
-            isLoading: false
-          }
-        })
+            isLoading: false,
+          },
+        });
       }
 
       if (data) {
@@ -54,16 +58,16 @@ const weatherStore: StateCreator<WeatherStore> = (set, get) => ({
               country: data.location.country,
               location: data.location.name,
               feelslike: data.current.feelslike_c,
-              time: formatTime(data.location.localtime)
+              time: formatTime(data.location.localtime),
             },
             isError: false,
             error: null,
-            isLoading: false
-          }
-        })
+            isLoading: false,
+          },
+        });
       }
-    }
-  }
+    },
+  },
 });
 
 export const useWeatherStore = create(weatherStore);

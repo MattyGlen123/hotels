@@ -1,25 +1,34 @@
-import axios, { AxiosError, AxiosResponse } from "axios"
-import { ErrorMessageData, WeatherResponse } from "./weather.type"
-import { weather } from "@/core/urls"
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { ErrorMessageData, WeatherResponse } from "./weather.type";
+import { weather } from "@/core/urls";
 
-export const getWeather = async (location: string): Promise<WeatherResponse> => {
+export const getWeather = async (
+  location: string
+): Promise<WeatherResponse> => {
+  console.log("-------- running");
   try {
-    const response: AxiosResponse = await axios.get(weather.getByLocation(location))
+    const response: AxiosResponse = await axios.get(
+      `http://localhost:3000/api/weather?location=${location}`
+    );
 
     return {
       data: response.data,
       isError: false,
-      error: null
-    }
+      error: null,
+    };
   } catch (err) {
     const error = err as ErrorMessageData;
-    
+
     const message = error?.response?.data?.error?.message || false;
-    
+
     return {
       data: null,
       isError: true,
-      error: message ? new AxiosError(message) : new AxiosError('Sorry, something went wrong fetching your weather data. Please try again.')
-    }
+      error: message
+        ? new AxiosError(message)
+        : new AxiosError(
+            "Sorry, something went wrong fetching your weather data. Please try again."
+          ),
+    };
   }
-}
+};
