@@ -1,0 +1,10 @@
+.stars {
+  display: flex;
+  margin-bottom: 1rem;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--yellow);
+  }
+}
