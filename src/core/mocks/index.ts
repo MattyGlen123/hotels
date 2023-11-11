@@ -1,6 +1,6 @@
 import { Hotel } from '../types/hotel.type'
 
-const mockHotel: Hotel = {
+export const mockHotel: Hotel = {
   name: 'Iberostar Grand Salome',
   location: 'Costa Adeje, Tenerife',
   stars: 5,

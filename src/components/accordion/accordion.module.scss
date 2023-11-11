@@ -1,0 +1,41 @@
+.root {
+
+}
+
+.toggle {
+  --buttonHeight: 2.2rem;
+  margin-top: calc(var(--buttonHeight) * -1);
+  height: var(--buttonHeight);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: var(--white);
+  border: none;
+  color: var(--navy);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.toggle-icon {
+  margin-left: .5rem;
+  width: auto;
+  height: 1rem;
+  fill: var(--navy);
+  border-radius: 0;
+
+  &.open {
+    transform: rotate(90deg);
+  }
+}
+
+.content {
+  background-color: var(--white);
+  padding: 1.25rem 1rem;
+  color: var(--darkGrey);
+}
+
+.content-heading {
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}

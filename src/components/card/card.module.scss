@@ -1,11 +1,24 @@
 .root {
   display: grid;
+  grid-template-areas: 
+  "image details"
+  "overview overview";
   grid-template-columns: 62% auto;
   background-color: var(--white);
 }
 
-.inner {
+.details {
+  grid-area: details;
   padding: 1.25rem 1rem;
+}
+
+.image-wrap {
+  grid-area: image;
+  position: relative;
+}
+
+.overview {
+  grid-area: overview;
 }
 
 .name {

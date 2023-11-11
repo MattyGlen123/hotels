@@ -4,6 +4,7 @@ import { CardProps } from './card.type'
 import Image from 'next/image'
 import { StarRating } from '../star-rating/star-rating'
 import { Button } from '../button/button'
+import { Accordion } from '../accordion/accordion'
 
 export const Card = ({
   image,
@@ -13,12 +14,22 @@ export const Card = ({
   price,
   passengers,
   date,
-  departingLocation
+  departingLocation,
+  overview,
+  initallyExpanded,
+  cardIndex
 }: CardProps) => {
   return (
     <article className={styles.root}>
-      <Image src={image.src} alt={image.alt} width={500} height={280} />
-      <div className={styles.inner}>
+      <Image
+        className={styles.image}
+        src={image.src}
+        alt={image.alt}
+        width={500}
+        height={280}
+      />
+
+      <div className={styles.details}>
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.location}>{location}</p>
         <StarRating count={stars} />
@@ -27,6 +38,23 @@ export const Card = ({
         <p className={styles.departingLocation}>{departingLocation}</p>
         <Button subtext="Book Now" text={`£${price}`} />
       </div>
+
+      <Accordion
+        openText={
+          <>
+            <strong>Read More</strong> about this hotel
+          </>
+        }
+        closeText={
+          <>
+            <strong>Read Less</strong> about this hotel
+          </>
+        }
+        body={overview}
+        initallyExpanded={initallyExpanded}
+        additionalClassName={styles.overview}
+        id={cardIndex}
+      />
     </article>
   )
 }

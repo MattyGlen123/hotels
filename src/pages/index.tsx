@@ -15,9 +15,15 @@ export default function Home() {
   return (
     <main className={styles.root}>
       <ul className={styles.list}>
-        <li>
-          <Card {...mockHotels[0]} />{' '}
-        </li>
+        {mockHotels.map((hotel, index) => (
+          <li key={hotel.name}>
+            <Card
+              {...hotel}
+              initallyExpanded={index === 0}
+              cardIndex={index + 1}
+            />
+          </li>
+        ))}
       </ul>
 
       {/* {isLoading && <Loading />} */}
