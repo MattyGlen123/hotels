@@ -23,13 +23,15 @@ export const Card = ({
 }: CardProps) => {
   return (
     <article className={styles.root}>
-      <Image
-        className={styles.image}
-        src={image.src}
-        alt={image.alt}
-        width={500}
-        height={280}
-      />
+      <div className={styles['image-wrap']}>
+        <Image
+          className={styles.image}
+          src={image.src}
+          alt={image.alt}
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
 
       <div className={styles.details}>
         <h3 className={styles.name}>{name}</h3>

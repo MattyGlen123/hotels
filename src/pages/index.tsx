@@ -20,37 +20,40 @@ export default function Home() {
 
   return (
     <main className={styles.root}>
-      {isLoading && <Loading />}
+      <div className={styles.inner}>
+        {isLoading && <Loading />}
 
-      {!isLoading && isSuccess && (
-        <>
-          <Filters
-            activeFilter={activeFilter}
-            ariaLabel="Sorting Options"
-            filters={filters}
-            handleFilterChange={handleOrderChange}
-          />
+        {!isLoading && isSuccess && (
+          <div className={styles.content}>
+            <Filters
+              activeFilter={activeFilter}
+              ariaLabel="Sorting Options"
+              filters={filters}
+              handleFilterChange={handleOrderChange}
+            />
 
-          <ul className={styles.list}>
-            {/* No results found message */}
-            {hotels?.map((hotel, index) => (
-              <li key={hotel.name}>
-                <Card
-                  {...hotel}
-                  initallyExpanded={index === 0}
-                  cardIndex={index + 1}
-                />
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
+            <ul className={styles.list}>
+              {/* No results found message */}
+              {hotels?.map((hotel, index) => (
+                <li key={hotel.name}>
+                  <Card
+                    {...hotel}
+                    initallyExpanded={index === 0}
+                    cardIndex={index + 1}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-      {!isLoading && isError && (
-        <p className={styles.error}>
-          Sorry, their was an issue finding the hotels. Please try again later.
-        </p>
-      )}
+        {!isLoading && isError && (
+          <p className={styles.error}>
+            Sorry, their was an issue finding the hotels. Please try again
+            later.
+          </p>
+        )}
+      </div>
     </main>
   )
 }
