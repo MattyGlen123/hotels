@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './accordion.module.scss'
 import { AccordionProps } from './accordion.type'
-import { classList } from '@/util/classList'
+import { classList } from '@/core/util/classList'
 
 export const Accordion = ({
   closeText,

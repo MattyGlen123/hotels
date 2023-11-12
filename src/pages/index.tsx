@@ -6,7 +6,7 @@ import { filters } from '@/core/mocks'
 import { Card } from '@/components/card/card'
 import styles from '../styles/index.module.scss'
 import { Filters } from '@/components/filters/filters'
-import { useHotels } from '@/hooks/use-hotels'
+import { useHotels } from '@/core/hooks/use-hotels'
 
 export default function Home() {
   const {
@@ -32,8 +32,11 @@ export default function Home() {
               handleFilterChange={handleOrderChange}
             />
 
+            {(hotels === null || hotels.length === 0) && (
+              <p className={styles.error}>No hotels found. Please try again</p>
+            )}
+
             <ul className={styles.list}>
-              {/* No results found message */}
               {hotels?.map((hotel, index) => (
                 <li key={hotel.name}>
                   <Card

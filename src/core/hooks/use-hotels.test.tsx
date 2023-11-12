@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import { useHotels } from './use-hotels'
-import { useHotelsStore } from '@/store/hotels'
+import { useHotelsStore } from '@/core/store/hotels'
 
 type UseHotelsStore = Partial<ReturnType<typeof useHotelsStore>>
 
@@ -42,7 +42,7 @@ const setup = (options?: Partial<SetupOptions>) => {
 
   return renderHook<ReturnType<typeof useHotels>, undefined>(() => useHotels())
 }
-
+// TODO: fix test
 describe('useHotels', () => {
   it('should return default values', () => {
     const { result } = setup()

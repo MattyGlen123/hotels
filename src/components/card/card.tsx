@@ -24,6 +24,7 @@ export const Card = ({
   return (
     <article className={styles.root}>
       <div className={styles['image-wrap']}>
+        {/* TODO: Update Image */}
         <Image
           className={styles.image}
           src={image.src}

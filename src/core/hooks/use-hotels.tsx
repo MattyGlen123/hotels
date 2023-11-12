@@ -1,4 +1,4 @@
-import { useHotelsStore } from '@/store/hotels'
+import { useHotelsStore } from '@/core/store/hotels'
 import { useEffect } from 'react'
 
 export function useHotels() {
