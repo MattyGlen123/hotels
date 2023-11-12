@@ -20,21 +20,6 @@ export const mockHotel: Hotel = {
 export const mockHotels: Hotel[] = [
   mockHotel,
   {
-    name: 'Hotel Aguamarina Golf',
-    location: 'Golf Del Sur, Tenerife',
-    stars: 4,
-    passengers: '2 Adults, 1 child',
-    date: '27th May 2019 for 7 days',
-    departingLocation: 'Liverpool',
-    price: 696.8,
-    overview:
-      'The Hotel Aguamarina Golf has an exceptional location in the south of Tenerife, overlooking the Atlantic Ocean. It is situated between the Golf del Sur and the Amarillo Golf courses, and is an ideal hotel for families, couples and groups who are looking for a holiday full of sport, sun and sea.',
-    image: {
-      src: '/hotel-image-2.png',
-      alt: 'Hotel Aguamarina Golf'
-    }
-  },
-  {
     name: 'Las Piramides Resort',
     location: 'Playa De Las Américas, Tenerife',
     stars: 3,
@@ -48,29 +33,44 @@ export const mockHotels: Hotel[] = [
       src: '/hotel-image-3.png',
       alt: 'Iberostar Las Piramides Resort'
     }
+  },
+  {
+    name: 'Hotel Aguamarina Golf',
+    location: 'Golf Del Sur, Tenerife',
+    stars: 4,
+    passengers: '2 Adults, 1 child',
+    date: '27th May 2019 for 7 days',
+    departingLocation: 'Liverpool',
+    price: 696.8,
+    overview:
+      'The Hotel Aguamarina Golf has an exceptional location in the south of Tenerife, overlooking the Atlantic Ocean. It is situated between the Golf del Sur and the Amarillo Golf courses, and is an ideal hotel for families, couples and groups who are looking for a holiday full of sport, sun and sea.',
+    image: {
+      src: '/hotel-image-2.png',
+      alt: 'Hotel Aguamarina Golf'
+    }
   }
 ]
 
 export const filters: Filter[] = [
   {
-    iconName: 'alpha',
-    initalChecked: true,
-    label: (
-      <>
-        sort <strong>alphabetically</strong>
-      </>
-    ),
-    value: 'alphabetically'
-  },
-  {
     iconName: 'price',
-    initalChecked: false,
+    initalChecked: true,
     label: (
       <>
         sort by <strong>price</strong>
       </>
     ),
     value: 'price'
+  },
+  {
+    iconName: 'alpha',
+    initalChecked: false,
+    label: (
+      <>
+        sort <strong>alphabetically</strong>
+      </>
+    ),
+    value: 'alphabetically'
   },
   {
     iconName: 'star',
@@ -80,6 +80,6 @@ export const filters: Filter[] = [
         sort by <strong>star rating</strong>
       </>
     ),
-    value: 'star'
+    value: 'star rating'
   }
 ]

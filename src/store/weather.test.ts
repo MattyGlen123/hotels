@@ -1,35 +1,38 @@
-import { waitFor } from '@testing-library/react';
-import { getWeather } from '../api/weather';
-import { useWeatherStore } from './weather';
-import { mockCurrentWeatherAPI } from "@/core/mocks";
+import { waitFor } from '@testing-library/react'
+import { getWeather } from '../core/api/weather'
+import { useWeatherStore } from './weather'
+import { mockCurrentWeatherAPI } from '@/core/mocks'
 
-const mockLocation = 'manchester';
+const mockLocation = 'manchester'
 jest.mock('../api/weather', () => ({
   getWeather: jest.fn()
-}));
+}))
 
 describe('useWeatherStore()', () => {
   it('should update state when setLocation() is called.', () => {
-    const { setLocation } = useWeatherStore.getState();
+    const { setLocation } = useWeatherStore.getState()
 
-    setLocation(mockLocation);
+    setLocation(mockLocation)
 
-    const { location } = useWeatherStore.getState();
+    const { location } = useWeatherStore.getState()
 
-    expect(location).toEqual(mockLocation);
-  });
+    expect(location).toEqual(mockLocation)
+  })
 
   it(`should return today's weather when currentWeather.query() is called.`, async () => {
-    
-    const { currentWeather: currentWeatherQuery } = useWeatherStore.getState();
+    const { currentWeather: currentWeatherQuery } = useWeatherStore.getState()
 
-    const getWeatherMock = getWeather as jest.Mock;
-    
-    getWeatherMock.mockResolvedValue({ data: mockCurrentWeatherAPI, isError: false, error: null });
+    const getWeatherMock = getWeather as jest.Mock
 
-    await currentWeatherQuery.query(mockLocation); 
+    getWeatherMock.mockResolvedValue({
+      data: mockCurrentWeatherAPI,
+      isError: false,
+      error: null
+    })
 
-    const { currentWeather } = useWeatherStore.getState();
+    await currentWeatherQuery.query(mockLocation)
+
+    const { currentWeather } = useWeatherStore.getState()
 
     await waitFor(() => {
       expect(currentWeather.data).toEqual({
@@ -38,8 +41,8 @@ describe('useWeatherStore()', () => {
         conditionText: mockCurrentWeatherAPI.current.condition.text,
         country: mockCurrentWeatherAPI.location.country,
         location: mockCurrentWeatherAPI.location.name,
-        time: "10:54 PM"
-      });
+        time: '10:54 PM'
+      })
     })
-  });
+  })
 })
