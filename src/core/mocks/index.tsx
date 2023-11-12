@@ -54,7 +54,6 @@ export const mockHotels: Hotel[] = [
 export const filters: Filter[] = [
   {
     iconName: 'price',
-    initalChecked: true,
     label: (
       <>
         sort by <strong>price</strong>
@@ -64,7 +63,6 @@ export const filters: Filter[] = [
   },
   {
     iconName: 'alpha',
-    initalChecked: false,
     label: (
       <>
         sort <strong>alphabetically</strong>
@@ -74,7 +72,6 @@ export const filters: Filter[] = [
   },
   {
     iconName: 'star',
-    initalChecked: false,
     label: (
       <>
         sort by <strong>star rating</strong>

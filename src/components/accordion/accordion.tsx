@@ -18,7 +18,7 @@ export const Accordion = ({
       <button
         id={`accordionid${id}`}
         aria-expanded={isExpanded}
-        aria-controls={`sect${id}`}
+        aria-controls={`section${id}`}
         type="button"
         className={styles.toggle}
         onClick={() => setIsExpanded(!isExpanded)}
@@ -39,7 +39,7 @@ export const Accordion = ({
       </button>
       {isExpanded && (
         <div
-          id={`sect${id}`}
+          id={`section${id}`}
           aria-labelledby={`accordionid${id}`}
           role="region"
           className={styles.content}

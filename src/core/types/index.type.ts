@@ -19,7 +19,6 @@ export type Hotel = {
 }
 
 export type Filter = {
-  initalChecked: boolean
   label: string | ReactNode
   value: string
   iconName: PathOptions

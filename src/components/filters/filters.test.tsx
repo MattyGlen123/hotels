@@ -7,12 +7,13 @@ import { filters } from '@/core/mocks'
 import userEvent from '@testing-library/user-event'
 
 describe('Filters', () => {
-  const mockHandleSort = jest.fn()
+  const mockHandleFilterChange = jest.fn()
 
   const filtersProps: FiltersProps = {
     ariaLabel: 'Sorting Options',
     filters: filters,
-    handleSort: mockHandleSort
+    handleFilterChange: mockHandleFilterChange,
+    activeFilter: 'star rating'
   }
 
   it('should render a checked filter', () => {
@@ -23,13 +24,13 @@ describe('Filters', () => {
     expect(radio).toBeInTheDocument()
   })
 
-  it('should call handleSort', async () => {
+  it('should call handleFilterChange', async () => {
     render(<Filters {...filtersProps} />)
 
     const radio = screen.getByRole('radio', { name: 'sort by price' })
 
     await userEvent.click(radio)
 
-    expect(mockHandleSort).toHaveBeenNthCalledWith(1, 'price')
+    expect(mockHandleFilterChange).toHaveBeenNthCalledWith(1, 'price')
   })
 })

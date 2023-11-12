@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import { type StateCreator } from 'zustand/vanilla'
 import { getHotels } from '../core/api/hotels'
-import { WeatherStore, WeatherStoreStateValues } from './weather.type'
 import { HotelsStore, HotelsStoreStateValues } from './hotels.type'
 
 export const initalState: HotelsStoreStateValues = {

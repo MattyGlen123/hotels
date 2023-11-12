@@ -3,11 +3,8 @@ import { hotels } from '@/core/urls'
 import { HotelsResponse } from './hotels.type'
 
 export const getHotels = async (): Promise<HotelsResponse> => {
-  console.log('-------- running')
   try {
-    const response: AxiosResponse = await axios.get(
-      `http://localhost:3000/api/hotels`
-    )
+    const response: AxiosResponse = await axios.get(hotels.get)
 
     return {
       data: response.data,

@@ -6,12 +6,12 @@ import { filters } from '@/core/mocks'
 import { Card } from '@/components/card/card'
 import styles from '../styles/index.module.scss'
 import { Filters } from '@/components/filters/filters'
-import { useEffect, useState } from 'react'
-import { Hotel } from '@/core/types/index.type'
+import { useEffect } from 'react'
 import { useHotelsStore } from '@/store/hotels'
 
 export default function Home() {
   const {
+    activeFilter,
     fetchHotels,
     isLoading,
     isSuccess,
@@ -21,6 +21,7 @@ export default function Home() {
     orderByName,
     orderByStarRating
   } = useHotelsStore((state) => ({
+    activeFilter: state.activeFilter,
     hotels: state.hotels.data,
     fetchHotels: state.hotels.query,
     isLoading: state.hotels.isLoading,
@@ -32,6 +33,7 @@ export default function Home() {
   }))
 
   useEffect(() => {
+    // TODO: remove semi-colon
     ;(async () => {
       await fetchHotels()
 
@@ -39,7 +41,7 @@ export default function Home() {
     })()
   }, [fetchHotels, orderByPrice])
 
-  const handleSort = (value: string) => {
+  const handleOrderChange = (value: string) => {
     if (value === 'price') {
       orderByPrice()
     } else if (value === 'alphabetically') {
@@ -56,9 +58,10 @@ export default function Home() {
       {!isLoading && isSuccess && (
         <>
           <Filters
+            activeFilter={activeFilter}
             ariaLabel="Sorting Options"
             filters={filters}
-            handleSort={handleSort}
+            handleFilterChange={handleOrderChange}
           />
 
           <ul className={styles.list}>
@@ -73,6 +76,12 @@ export default function Home() {
             ))}
           </ul>
         </>
+      )}
+
+      {!isLoading && isError && (
+        <p className={styles.error}>
+          Sorry, their was an issue finding the hotels. Please try again later.
+        </p>
       )}
     </main>
   )
