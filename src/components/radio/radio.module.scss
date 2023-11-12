@@ -1,0 +1,36 @@
+.label {
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  overflow: visible;
+}
+
+.select-box {
+  display: block;
+  padding: 1rem;
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  height: 1.75rem;
+  width: 1.75rem;
+  fill: var(--grey);
+}
+
+.input:checked + .select-box .icon {
+  fill: var(--white);
+}
+
+.input:checked + .select-box {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.text {
+  align-self: center;
+}

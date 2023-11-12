@@ -1,4 +1,5 @@
-import { Hotel } from '../types/hotel.type'
+import { Hotel } from '../types/index.type'
+import { Filter } from '@/core/types/index.type'
 
 export const mockHotel: Hotel = {
   name: 'Iberostar Grand Salome',
@@ -47,5 +48,38 @@ export const mockHotels: Hotel[] = [
       src: '/hotel-image-3.png',
       alt: 'Iberostar Las Piramides Resort'
     }
+  }
+]
+
+export const filters: Filter[] = [
+  {
+    iconName: 'alpha',
+    initalChecked: true,
+    label: (
+      <>
+        sort <strong>alphabetically</strong>
+      </>
+    ),
+    value: 'alphabetically'
+  },
+  {
+    iconName: 'price',
+    initalChecked: false,
+    label: (
+      <>
+        sort by <strong>price</strong>
+      </>
+    ),
+    value: 'price'
+  },
+  {
+    iconName: 'star',
+    initalChecked: false,
+    label: (
+      <>
+        sort by <strong>star rating</strong>
+      </>
+    ),
+    value: 'star'
   }
 ]

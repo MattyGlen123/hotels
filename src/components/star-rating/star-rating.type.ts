@@ -1,4 +1,4 @@
-import { Stars } from '@/core/types/hotel.type'
+import { Stars } from '@/core/types/index.type'
 
 export type StarRatingsProps = {
   count: Stars

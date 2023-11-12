@@ -5,15 +5,25 @@ import { StarRating } from '@/components/star-rating/star-rating'
 import { Button } from '@/components/button/button'
 // import { Loading } from '@/components/loading/loading'
 
-import { mockHotels } from '@/core/mocks'
+import { filters, mockHotels } from '@/core/mocks'
 import { Card } from '@/components/card/card'
 import styles from '../styles/index.module.scss'
+import { Filters } from '@/components/filters/filters'
 
 export default function Home() {
   // const { isError, weatherData, isLoading, error } = useCurrentWeather()
 
+  const handleSort = (value: string) => {
+    console.log(value)
+  }
+
   return (
     <main className={styles.root}>
+      <Filters
+        ariaLabel="Sorting Options"
+        filters={filters}
+        handleSort={handleSort}
+      />
       <ul className={styles.list}>
         {mockHotels.map((hotel, index) => (
           <li key={hotel.name}>
