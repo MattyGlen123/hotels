@@ -5,8 +5,13 @@ export const mockHotel: Hotel = {
   name: 'Iberostar Grand Salome',
   location: 'Costa Adeje, Tenerife',
   stars: 5,
-  passengers: '2 Adults, 2 children & 1 infant',
-  date: '3rd July 2019 for 7 days',
+  passengers: {
+    adults: 2,
+    children: 2,
+    infants: 1
+  },
+  date: '3rd July 2019',
+  duration: 7,
   departingLocation: 'East Midlands',
   price: 1136.5,
   overview:
@@ -23,9 +28,13 @@ export const mockHotels: Hotel[] = [
     name: 'Las Piramides Resort',
     location: 'Playa De Las Américas, Tenerife',
     stars: 3,
-    passengers: '2 Adults, 2 children',
-    date: '3rd July 2019 for 7 days',
-    departingLocation: 'Manchster',
+    passengers: {
+      adults: 2,
+      children: 1
+    },
+    date: '3rd July 2019',
+    duration: 7,
+    departingLocation: 'Manchester',
     price: 499.99,
     overview:
       'Step out of your spacious room and straight onto the bustling Veronicas Strip with this perfectly located Aparthotel. With 2 outdoor pools you’ll have plenty of space for sunbed lounging + daytime dips. There’s even a handy poolside bar – ideal for grazing the afternoon away.',
@@ -38,8 +47,12 @@ export const mockHotels: Hotel[] = [
     name: 'Aguamarina Golf Hotel',
     location: 'Golf Del Sur, Tenerife',
     stars: 4,
-    passengers: '2 Adults, 1 child',
-    date: '27th May 2019 for 7 days',
+    passengers: {
+      adults: 2,
+      children: 2
+    },
+    date: '27th May 2019',
+    duration: 7,
     departingLocation: 'Liverpool',
     price: 696.8,
     overview:

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { StarRating } from '../star-rating/star-rating'
 import { Button } from '../button/button'
 import { Accordion } from '../accordion/accordion'
+import { formatPassengers } from './util'
 
 export const Card = ({
   image,
@@ -14,6 +15,7 @@ export const Card = ({
   price,
   passengers,
   date,
+  duration,
   departingLocation,
   overview,
   initallyExpanded,
@@ -33,9 +35,16 @@ export const Card = ({
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.location}>{location}</p>
         <StarRating count={stars} />
-        <p className={styles.guests}>{passengers}</p>
-        <p className={styles.date}>{date}</p>
-        <p className={styles.departingLocation}>{departingLocation}</p>
+        <p data-testid="passengers" className={styles.guests}>
+          {formatPassengers(passengers)}
+        </p>
+        <p className={styles.date}>
+          <strong>{date}</strong> for{' '}
+          <strong>{duration > 1 ? `${duration} days` : `1 day`}</strong>
+        </p>
+        <p className={styles.departingLocation}>
+          departing from <strong>{departingLocation}</strong>
+        </p>
         <Button subtext="Book Now" text={`£${price}`} />
       </div>
 
