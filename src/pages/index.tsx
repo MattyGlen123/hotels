@@ -6,50 +6,17 @@ import { filters } from '@/core/mocks'
 import { Card } from '@/components/card/card'
 import styles from '../styles/index.module.scss'
 import { Filters } from '@/components/filters/filters'
-import { useEffect } from 'react'
-import { useHotelsStore } from '@/store/hotels'
+import { useHotels } from '@/hooks/use-hotels'
 
 export default function Home() {
   const {
-    activeFilter,
-    fetchHotels,
-    isLoading,
-    isSuccess,
-    isError,
     hotels,
-    orderByPrice,
-    orderByName,
-    orderByStarRating
-  } = useHotelsStore((state) => ({
-    activeFilter: state.activeFilter,
-    hotels: state.hotels.data,
-    fetchHotels: state.hotels.query,
-    isLoading: state.hotels.isLoading,
-    isSuccess: state.hotels.isSuccess,
-    isError: state.hotels.isError,
-    orderByPrice: state.orderByPrice,
-    orderByName: state.orderByName,
-    orderByStarRating: state.orderByStarRating
-  }))
-
-  useEffect(() => {
-    // TODO: remove semi-colon
-    ;(async () => {
-      await fetchHotels()
-
-      orderByPrice()
-    })()
-  }, [fetchHotels, orderByPrice])
-
-  const handleOrderChange = (value: string) => {
-    if (value === 'price') {
-      orderByPrice()
-    } else if (value === 'alphabetically') {
-      orderByName()
-    } else if (value === 'star rating') {
-      orderByStarRating()
-    }
-  }
+    activeFilter,
+    isLoading,
+    isError,
+    isSuccess,
+    handleOrderChange
+  } = useHotels()
 
   return (
     <main className={styles.root}>
@@ -65,6 +32,7 @@ export default function Home() {
           />
 
           <ul className={styles.list}>
+            {/* No results found message */}
             {hotels?.map((hotel, index) => (
               <li key={hotel.name}>
                 <Card

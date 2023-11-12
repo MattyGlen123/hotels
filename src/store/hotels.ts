@@ -4,6 +4,7 @@ import { getHotels } from '../core/api/hotels'
 import { HotelsStore, HotelsStoreStateValues } from './hotels.type'
 
 export const initalState: HotelsStoreStateValues = {
+  // TODO: fix the filter options
   activeFilter: 'price'
 }
 
@@ -57,7 +58,7 @@ const hotelsStore: StateCreator<HotelsStore> = (set, get) => ({
   },
   orderByPrice: () => {
     const newHotelsOrder = {
-      ...get().hotels.data?.sort((a, b) => a.price - b.price)
+      ...get().hotels.data?.sort((a, b) => b.price - a.price)
     }
 
     set({

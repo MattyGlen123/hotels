@@ -35,7 +35,7 @@ export const mockHotels: Hotel[] = [
     }
   },
   {
-    name: 'Hotel Aguamarina Golf',
+    name: 'Aguamarina Golf Hotel',
     location: 'Golf Del Sur, Tenerife',
     stars: 4,
     passengers: '2 Adults, 1 child',
