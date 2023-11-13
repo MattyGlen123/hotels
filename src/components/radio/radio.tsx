@@ -8,13 +8,16 @@ export const Radio = ({
   isChecked,
   label,
   value,
-  iconName
+  iconName,
+  name
 }: RadioProps) => {
   return (
-    <label className={styles.label}>
+    <label htmlFor={value} className={styles.label}>
       <input
+        name={name}
         className={styles.input}
         type="radio"
+        id={value}
         value={value}
         checked={isChecked}
         onChange={handleChange}

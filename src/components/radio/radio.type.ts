@@ -7,4 +7,5 @@ export type RadioProps = {
   label: string | ReactNode
   value: string
   iconName: PathOptions
+  name: string
 }

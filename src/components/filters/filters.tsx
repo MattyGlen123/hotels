@@ -20,9 +20,10 @@ export const Filters = ({
   }
 
   return (
-    <div className={styles.root} role="group" aria-labelledby={ariaLabel}>
+    <div className={styles.root} aria-labelledby={ariaLabel}>
       {filters.map(({ iconName, label, value }) => (
         <Radio
+          name={ariaLabel}
           key={`${ariaLabel}-${value}`}
           value={value}
           label={label}

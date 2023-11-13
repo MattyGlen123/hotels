@@ -13,7 +13,8 @@ describe('Radio', () => {
     iconName: 'alpha',
     isChecked: false,
     label: 'Test label',
-    value: 'Test vak'
+    value: 'Test vak',
+    name: 'test group'
   }
 
   it('should call handleChange method', async () => {
