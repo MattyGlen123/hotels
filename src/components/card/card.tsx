@@ -54,7 +54,7 @@ export const Card = ({
           departing from <strong>{departingLocation}</strong>
         </p>
 
-        <Button subtext="Book Now" text={`£${price}`} />
+        <Button subtext="Book Now" text={`£${price.toFixed(2)}`} />
       </div>
 
       <Accordion
