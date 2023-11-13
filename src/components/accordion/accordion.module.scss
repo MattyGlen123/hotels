@@ -22,6 +22,10 @@ $tablet: 65rem;
     margin-top: calc(var(--buttonHeight) * -1);
     width: initial;
   }
+
+  &:hover {
+    background-color: var(--offWhite);
+  }
 }
 
 .toggle-icon {
