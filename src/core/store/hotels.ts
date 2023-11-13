@@ -9,7 +9,6 @@ export const initalState: HotelsStoreStateValues = {
 
 const hotelsStore: StateCreator<HotelsStore> = (set, get) => ({
   ...initalState,
-  setActiveFilter: (activeFilter) => set({ activeFilter }),
   hotels: {
     data: null,
     error: null,

@@ -3,20 +3,18 @@ import { useHotelsStore } from './hotels'
 import { getHotels } from '@/core/api/hotels'
 import { mockHotels } from '@/core/mocks'
 
-jest.mock('../core/api/hotels', () => ({
+jest.mock('../api/hotels', () => ({
   getHotels: jest.fn()
 }))
 
 describe('useHotelsStore()', () => {
-  it('should update the activeFilter when setActiveFilter() is called.', () => {
-    const mockActiveFilter = 'price'
-    const { setActiveFilter } = useHotelsStore.getState()
+  it('should default to inital state', () => {
+    const { activeFilter, hotels } = useHotelsStore.getState()
 
-    setActiveFilter(mockActiveFilter)
-
-    const { activeFilter } = useHotelsStore.getState()
-
-    expect(activeFilter).toEqual(mockActiveFilter)
+    expect(activeFilter).toEqual('price')
+    expect(hotels.data).toBeNull()
+    expect(hotels.isLoading).toEqual(false)
+    expect(hotels.isError).toEqual(false)
   })
 
   it(`should return hotelsData when hotel.query() is called.`, async () => {

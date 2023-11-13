@@ -25,7 +25,6 @@ export function useHotels() {
   }))
 
   useEffect(() => {
-    // TODO: remove semi-colon
     ;(async () => {
       await fetchHotels()
 

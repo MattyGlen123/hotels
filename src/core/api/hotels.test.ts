@@ -6,7 +6,7 @@ import { mockHotels } from '../mocks'
 
 jest.mock('axios')
 
-describe('getWeather', () => {
+describe('getHotels', () => {
   it('should return a success response', async () => {
     const mockResponse = {
       data: mockHotels,

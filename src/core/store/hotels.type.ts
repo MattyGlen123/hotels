@@ -1,10 +1,8 @@
 import { Hotel } from '@/core/types/index.type'
-import { CurrentWeatherData } from '@/core/types/weather.type'
 import { AxiosError } from 'axios'
 
 export type HotelsStore = {
   activeFilter: string
-  setActiveFilter: (text: string) => void
   hotels: {
     data: Hotel[] | null
     query: () => Promise<void>

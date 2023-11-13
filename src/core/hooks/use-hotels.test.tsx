@@ -8,23 +8,21 @@ type SetupOptions = {
   useHotelsStore: UseHotelsStore
 }
 
-jest.mock('src/store/hotels', () => ({
+jest.mock('src/core/store/hotels', () => ({
   useHotelsStore: jest.fn().mockImplementation(() => ({
     state: jest.fn()
   }))
 }))
 
+const mockFetchHotels = jest.fn()
+
 const defaultState = {
-  activeFiler: 'price',
-  setActiveFilter: jest.fn(),
-  hotels: {
-    data: null,
-    error: null,
-    isError: false,
-    isLoading: false,
-    isSuccess: false,
-    query: jest.fn()
-  },
+  activeFilter: 'price',
+  fetchHotels: mockFetchHotels,
+  isLoading: false,
+  isSuccess: false,
+  isError: false,
+  hotels: null,
   orderByPrice: jest.fn(),
   orderByName: jest.fn(),
   orderByStarRating: jest.fn()
@@ -42,23 +40,24 @@ const setup = (options?: Partial<SetupOptions>) => {
 
   return renderHook<ReturnType<typeof useHotels>, undefined>(() => useHotels())
 }
-// TODO: fix test
+
 describe('useHotels', () => {
-  it('should return default values', () => {
+  it('should return default state', () => {
     const { result } = setup()
 
-    const {
-      isLoading,
-      hotels,
-      isError,
-      activeFilter,
-      handleOrderChange,
-      isSuccess
-    } = result.current
+    const { isLoading, hotels, isError, activeFilter, isSuccess } =
+      result.current
 
     expect(isError).toBe(false)
+    expect(isLoading).toBe(false)
+    expect(isSuccess).toBe(false)
     expect(hotels).toBeNull()
-    expect(isLoading).toBe(true)
     expect(activeFilter).toBe('price')
+  })
+
+  it('should call fetchHotels', () => {
+    setup()
+
+    expect(mockFetchHotels).toHaveBeenCalledTimes(1)
   })
 })
