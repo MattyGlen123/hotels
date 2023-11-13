@@ -52,7 +52,7 @@ export default function Home() {
 
         {!isLoading && isError && (
           <p className={styles.error}>
-            Sorry, their was an issue finding the hotels. Please try again
+            Sorry, there was an issue finding the hotels. Please try again
             later.
           </p>
         )}

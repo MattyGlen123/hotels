@@ -3,6 +3,7 @@ import styles from './loading.module.scss'
 export const Loading = () => (
   <div className={styles.root}>
     <svg
+      aria-label="Loading"
       className={styles.spinner}
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
