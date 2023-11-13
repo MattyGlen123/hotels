@@ -4,7 +4,6 @@ import { getHotels } from '../api/hotels'
 import { HotelsStore, HotelsStoreStateValues } from './hotels.type'
 
 export const initalState: HotelsStoreStateValues = {
-  // TODO: fix the filter options
   activeFilter: 'price'
 }
 

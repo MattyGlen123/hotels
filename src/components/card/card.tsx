@@ -36,18 +36,24 @@ export const Card = ({
 
       <div className={styles.details}>
         <h3 className={styles.name}>{name}</h3>
+
         <p className={styles.location}>{location}</p>
+
         <StarRating count={stars} />
+
         <p data-testid="passengers" className={styles.guests}>
           {formatPassengers(passengers)}
         </p>
+
         <p className={styles.date}>
           <strong>{date}</strong> for{' '}
           <strong>{duration > 1 ? `${duration} days` : `1 day`}</strong>
         </p>
+
         <p className={styles.departingLocation}>
           departing from <strong>{departingLocation}</strong>
         </p>
+
         <Button subtext="Book Now" text={`£${price}`} />
       </div>
 
