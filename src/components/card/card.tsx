@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './card.module.scss'
 import { CardProps } from './card.type'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { StarRating } from '../star-rating/star-rating'
 import { Button } from '../button/button'
 import { Accordion } from '../accordion/accordion'
@@ -24,8 +24,8 @@ export const Card = ({
   return (
     <article className={styles.root}>
       <div className={styles['image-wrap']}>
-        {/* TODO: Update Image */}
         <Image
+          priority={true}
           className={styles.image}
           src={image.src}
           alt={image.alt}
