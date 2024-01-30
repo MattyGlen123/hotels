@@ -1,4 +1,4 @@
-import { Hotel } from '../../types/hotel'
+import { Hotel } from '../hotel'
 
 export const mockHotel: Hotel = {
   hotelId: '1',
